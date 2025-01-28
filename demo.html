@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Dropdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<!-- Button to open off-canvas menu -->
+<button class="text-white bg-blue-500 p-3 rounded" onclick="toggleMenu()">Open Menu</button>
+
+<!-- Off-canvas menu -->
+<div id="offcanvasMenu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden opacity-0 pointer-events-none transition-all duration-500 ease-in-out" onclick="closeMenu(event)">
+  <div class="w-64 bg-white h-full p-5 space-y-6 transform -translate-x-full transition-transform duration-500 ease-in-out" onclick="event.stopPropagation()">
+    <button class="text-gray-600 text-xl" onclick="toggleMenu()">Close</button>
+    <nav class="space-y-4">
+      <a href="#" class="block text-lg text-gray-800">Home</a>
+      <a href="#" class="block text-lg text-gray-800">About</a>
+      <a href="#" class="block text-lg text-gray-800">Services</a>
+      <a href="#" class="block text-lg text-gray-800">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const offCanvas = document.getElementById('offcanvasMenu');
+    const content = offCanvas.querySelector('div');
+    offCanvas.classList.toggle('hidden'); // Show/hide off-canvas (overlay)
+    offCanvas.classList.toggle('opacity-0'); // Fade-in/out for overlay
+    offCanvas.classList.toggle('opacity-100'); // Ensure opacity transitions correctly
+    offCanvas.classList.toggle('pointer-events-none'); // Ensure off-canvas is interactive only when visible
+    content.classList.toggle('-translate-x-full');  // Slide the menu in/out
+    content.classList.toggle('translate-x-0');     // Make the content slide in/out smoothly
+  }
+
+  // Close menu if clicking outside the sidebar
+  function closeMenu(event) {
+    const offCanvas = document.getElementById('offcanvasMenu');
+    if (!event.target.closest('div.w-64')) {  // If click is outside the sidebar, close the menu
+      toggleMenu();
+    }
+  }
+</script>
+
+</body>
+</html>
