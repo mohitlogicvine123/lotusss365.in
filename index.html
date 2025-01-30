@@ -8,14 +8,13 @@
         <link rel="shortcut icon" href="assets/img/favicon.jpg" type="image/x-icon">
         <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- maain style -->
-        <link rel="stylesheet" href="assets/css/style.css">
         <!-- font family -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     </head>
     <body class="font-opensans text-[#4A4A4C]">
+
         <!-- ***** header start ***** -->
         <header class="lg:pt-6 pt-4 lg:pb-0 pb-4 border-b bg-theme1">
             <div class="container xl:max-w-[1200px] mx-auto px-4">
@@ -491,10 +490,6 @@
         </footer>
         <!-- footer end -->
 
-        <!-- js files -->
-        <script src="assets/js/main.js"></script>
-        <script src="assets/js/tailwind.config.js"></script>
-
         <script>
             function toggleMenu() {
             const offCanvas = document.getElementById('offcanvasMenu');
@@ -517,6 +512,23 @@
                 toggleMenu();
                 }
             }
+        </script>
+
+        <!-- tailwind theme js -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    fontFamily: {
+                        'opensans': ['"Open Sans", sans-serif '],
+                    },
+                    extend: {
+                        colors: {
+                            theme1: '#0c9971',
+                            theme2: '#f9df10',
+                        },
+                    },
+                },
+            };
         </script>
     </body>
     </html>
