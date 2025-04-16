@@ -19,14 +19,18 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LSWT7RF1M"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-1LSWT7RF1M'); </script>
     <!-- favicon -->
+    <!-- Ye 2 lines ek saath use karein -->
+    <link rel="preload" href="assets/img/lotus-favicon.png" as="image" onload="this.rel='shortcut icon'">
     <link rel="shortcut icon" href="assets/img/lotus-favicon.png" type="image/x-icon">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" 
+        rel="stylesheet" 
+      media="print"
+      onload="this.media='all'; this.onload=null;">
 </head>
 <body class="font-opensans text-[#4A4A4C]">
 
@@ -594,32 +598,32 @@
         const accordionItems = document.querySelectorAll('.accordion-item');
 
         accordionItems.forEach(item => {
-    const header = item.querySelector('.accordion-header');
-    const content = item.querySelector('.accordion-content');
-    const icon = header.querySelector('[data-accordion-icon]');
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const icon = header.querySelector('[data-accordion-icon]');
 
-    header.addEventListener('click', () => {
-        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+            header.addEventListener('click', () => {
+                const isExpanded = header.getAttribute('aria-expanded') === 'true';
 
-        accordionItems.forEach(otherItem => {
-            if (otherItem !== item) {
-                const otherHeader = otherItem.querySelector('.accordion-header');
-                const otherContent = otherItem.querySelector('.accordion-content');
-                const otherIcon = otherItem.querySelector('[data-accordion-icon]');
-                otherContent.classList.add('hidden');
-                otherIcon.classList.remove('rotate-180');
-                otherHeader.setAttribute('aria-expanded', 'false');
-                otherHeader.classList.remove('bg-gray-0', 'text-black'); // Reset color
-            }
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        const otherHeader = otherItem.querySelector('.accordion-header');
+                        const otherContent = otherItem.querySelector('.accordion-content');
+                        const otherIcon = otherItem.querySelector('[data-accordion-icon]');
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-180');
+                        otherHeader.setAttribute('aria-expanded', 'false');
+                        otherHeader.classList.remove('bg-gray-0', 'text-black'); // Reset color
+                    }
+                });
+
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                header.setAttribute('aria-expanded', !isExpanded);
+                header.classList.toggle('bg-gray-0', !isExpanded); // Change background when active
+                header.classList.toggle('text-black', !isExpanded); // Change text color when active
+            });
         });
-
-        content.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180');
-        header.setAttribute('aria-expanded', !isExpanded);
-        header.classList.toggle('bg-gray-0', !isExpanded); // Change background when active
-        header.classList.toggle('text-black', !isExpanded); // Change text color when active
-    });
-});
     </script>
 </body>
 </html>
