@@ -625,18 +625,14 @@
 
     <script>
         const loc = window.location;
-        if (
-        loc.hostname.startsWith("www.") ||
-        loc.pathname.toLowerCase() === "/index.html"
-        ) {
-        window.location.replace("https://lotuuss365.in/");
+        const currentHostname = loc.hostname;
+        const currentPath = loc.pathname.toLowerCase();
+    
+        // Redirect if "www." is present or if "index.html" is in the path
+        if (currentHostname.startsWith("www.") || currentPath === "/index.html") {
+        window.location.replace("https://lotuuss365.in" + (currentPath === "/index.html" ? "/" : loc.pathname));
         }
-    </script>
-    <script>
-        if (window.location.hostname.startsWith('www.')) {
-          window.location.replace('https://lotuuss365.in' + window.location.pathname);
-        }
-    </script>
+  </script>
   
   
 </body>
